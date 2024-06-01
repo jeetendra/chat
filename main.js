@@ -1,8 +1,10 @@
 import ollama from 'ollama'
 
-const response = await ollama.chat({
-  model: 'llama3',
-  messages: [{ role: 'user', content: 'Why is the sky blue?' }],
-})
-
-console.log(response)
+export async function chat(messages) {
+  const response = await ollama.chat({
+    model: 'llama3',
+    format: "json",
+    messages,
+  })
+  return response;
+}
